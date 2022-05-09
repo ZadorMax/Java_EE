@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -28,6 +28,9 @@
         </div>
         <div class="mb-3">
             Book ISBN: <input name="isbn">
+        </div>
+        <div class="mb-3">
+            Book Author: <input name="author">
         </div>
         <button type="find" class="btn btn-success">Find</button>
     </form>
@@ -89,7 +92,8 @@
                 dataType: 'json',
                 data: JSON.stringify({
                     name: $(this).find('[name=name]').val(),
-                    isbn: $(this).find('[name=isbn]').val()
+                    isbn: $(this).find('[name=isbn]').val(),
+                    author: $(this).find('[name=author]').val()
                 }),
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Content-Type', 'application/json')

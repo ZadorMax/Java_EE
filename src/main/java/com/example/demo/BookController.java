@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,14 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class BookController {
 
    // List<Book> books = new ArrayList<>();
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+//    public BookController(BookService bookService) {
+//        this.bookService = bookService;
+//    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ResponseEntity<List<Book>> saveBook(
@@ -35,7 +37,7 @@ public class BookController {
     ) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(bookService.findByNameIsbn(book.getName(),book.getIsbn()));
+                .body(bookService.findByNameIsbn(book.getName(),book.getIsbn(),book.getAuthor()));
     }
 
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
@@ -44,6 +46,20 @@ public class BookController {
                 .status(HttpStatus.OK)
                 .body(bookService.getAll());
     }
+
+    //private final BookService bookService;
+
+//    @RequestMapping("/")
+//    public String index() {
+//        return "index";
+//    }
+//
+//    @GetMapping("/book/{isbn}")
+//    public String getBookByIsbn(@PathVariable String isbn, @ModelAttribute Book book, Model model) {
+//
+//        model.addAttribute("book", bookService.findByIsbn(isbn));
+//        return "book";
+//    }
 
 
 //    @RequestMapping(value = "/books-list", method = RequestMethod.GET)

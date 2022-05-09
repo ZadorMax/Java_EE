@@ -46,23 +46,23 @@ class DemoApplicationTests {
 //		verify(booksService).add(any());
 //		verify(booksService).getAll();
 //	}
-
-	@Test
-	@SneakyThrows
-	void getAllBooks() {
-
-		Book book = new Book("abc", "1234", "Zador Max");
-		//Book bookObj2 = new Book("abc", "1234", "Zador Max");
-		when(booksService.getAll()).thenReturn(List.of(book));
-
-		mockMvc.perform(
-						get("/findAll")
-								.contentType(MediaType.APPLICATION_JSON))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(content().json(new String(Objects.requireNonNull(DemoApplicationTests.class.getResourceAsStream("/response.json")).readAllBytes())));
-
-		verify(booksService).getAll();
-	}
+//
+//	@Test
+//	@SneakyThrows
+//	void getAllBooks() {
+//
+//		Book book = new Book("abc", "1234", "Zador Max");
+//		//Book bookObj2 = new Book("abc", "1234", "Zador Max");
+//		when(booksService.getAll()).thenReturn(List.of(book));
+//
+//		mockMvc.perform(
+//						get("/findAll")
+//								.contentType(MediaType.APPLICATION_JSON))
+//				.andDo(print())
+//				.andExpect(status().isOk())
+//				.andExpect(content().json(new String(Objects.requireNonNull(DemoApplicationTests.class.getResourceAsStream("/response.json")).readAllBytes())));
+//
+//		verify(booksService).getAll();
+//	}
 
 }
