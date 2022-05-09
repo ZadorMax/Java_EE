@@ -1,9 +1,10 @@
 package com.example.demo;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Getter
 @Setter
 @ToString
